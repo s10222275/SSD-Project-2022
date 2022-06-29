@@ -1,0 +1,56 @@
+﻿@page
+@model SSD_Project.Pages.Locations.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>       
+                Location
+            </th>
+            <th>
+                Block Number
+            </th>
+            <th>
+                Level
+            </th>
+            <th>
+                Room Number
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Location) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BlockNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomNo)
+            </td>
+
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

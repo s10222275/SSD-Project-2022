@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SSD_Project.Data;
 
 namespace SSD_Project
 {
@@ -24,6 +26,9 @@ namespace SSD_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<SSD_ProjectContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SSD_ProjectContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

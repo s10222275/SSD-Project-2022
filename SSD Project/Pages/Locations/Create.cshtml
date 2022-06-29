@@ -1,0 +1,50 @@
+﻿@page
+@model SSD_Project.Pages.Locations.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Location</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Location.LocationName" class="control-label">Location Name</label>
+                <input asp-for="Location.LocationName" class="form-control" />
+                <span asp-validation-for="Location.LocationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.BlockNum" class="control-label">Block Number</label>
+                <input asp-for="Location.BlockNum" class="form-control" />
+                <span asp-validation-for="Location.BlockNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.LevelNo" class="control-label">Level</label>
+                <input asp-for="Location.LevelNo" class="form-control" />
+                <span asp-validation-for="Location.LevelNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location.RoomNo" class="control-label">Room Number</label>
+                <input asp-for="Location.RoomNo" class="form-control" />
+                <span asp-validation-for="Location.RoomNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
