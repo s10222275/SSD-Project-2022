@@ -15,5 +15,11 @@ namespace SSD_Project.Data
         }
 
         public DbSet<SSD_Project.Models.Location> Location { get; set; }
+
+        public DbSet<SSD_Project.Models.FacilityType> FacilityType { get; set; }
+
+        public DbSet<SSD_Project.Models.Facility> Facility { get; set; }
+
+        public DbSet<SSD_Project.Models.Bookings> Bookings { get; set; }
     }
 }
