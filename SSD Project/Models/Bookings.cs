@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 
 namespace SSD_Project.Models
 {
-    public class FacilityType
+    public class Bookings
     {
         public int ID { get; set; }
-        public string Type { get; set; }
+        public User Users { get; set; }
+        public DateTime Time { get; set; }
+        public Facility Facility { get; set; }
+
+
     }
 }

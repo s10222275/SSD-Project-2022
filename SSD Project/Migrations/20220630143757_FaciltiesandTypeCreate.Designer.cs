@@ -3,46 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SSD_Project.Data;
 
 namespace SSD_Project.Migrations
 {
     [DbContext(typeof(SSD_ProjectContext))]
-    partial class SSD_ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20220630143757_FaciltiesandTypeCreate")]
+    partial class FaciltiesandTypeCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("SSD_Project.Models.Bookings", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("FacilityID")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Time")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("UsersID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("FacilityID");
-
-                    b.HasIndex("UsersID");
-
-                    b.ToTable("Bookings");
-                });
 
             modelBuilder.Entity("SSD_Project.Models.Facility", b =>
                 {
@@ -57,8 +34,8 @@ namespace SSD_Project.Migrations
                     b.Property<int>("NumOfPeople")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("TypeID")
                         .HasColumnType("int");
@@ -112,35 +89,6 @@ namespace SSD_Project.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Location");
-                });
-
-            modelBuilder.Entity("SSD_Project.Models.User", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Contact_Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("User");
-                });
-
-            modelBuilder.Entity("SSD_Project.Models.Bookings", b =>
-                {
-                    b.HasOne("SSD_Project.Models.Facility", "Facility")
-                        .WithMany()
-                        .HasForeignKey("FacilityID");
-
-                    b.HasOne("SSD_Project.Models.User", "Users")
-                        .WithMany()
-                        .HasForeignKey("UsersID");
                 });
 
             modelBuilder.Entity("SSD_Project.Models.Facility", b =>
