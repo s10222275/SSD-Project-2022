@@ -1,0 +1,72 @@
+﻿@page
+@model SSD_Project.Pages.Bookings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Facilitys)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].StatusOfBooking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].CheckInStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].NumOfPeople)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Booking) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facilitys.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusOfBooking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckInStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfPeople)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.BookingID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.BookingID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.BookingID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

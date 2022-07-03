@@ -1,0 +1,75 @@
+﻿@page
+@model SSD_Project.Pages.Facilities.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Facility</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Facility.FacilityID" />
+            <div class="form-group">
+                <label asp-for="Facility.Name" class="control-label"></label>
+                <input asp-for="Facility.Name" class="form-control" />
+                <span asp-validation-for="Facility.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.Status" class="control-label"></label>
+                <input asp-for="Facility.Status" class="form-control" />
+                <span asp-validation-for="Facility.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.MaxNumOfPeople" class="control-label"></label>
+                <input asp-for="Facility.MaxNumOfPeople" class="form-control" />
+                <span asp-validation-for="Facility.MaxNumOfPeople" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.BlockNum" class="control-label"></label>
+                <input asp-for="Facility.BlockNum" class="form-control" />
+                <span asp-validation-for="Facility.BlockNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.LocationName" class="control-label"></label>
+                <input asp-for="Facility.LocationName" class="form-control" />
+                <span asp-validation-for="Facility.LocationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.LevelNo" class="control-label"></label>
+                <input asp-for="Facility.LevelNo" class="form-control" />
+                <span asp-validation-for="Facility.LevelNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.RommNo" class="control-label"></label>
+                <input asp-for="Facility.RommNo" class="form-control" />
+                <span asp-validation-for="Facility.RommNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.Description" class="control-label"></label>
+                <input asp-for="Facility.Description" class="form-control" />
+                <span asp-validation-for="Facility.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Facility.FilePath" class="control-label"></label>
+                <input asp-for="Facility.FilePath" class="form-control" />
+                <span asp-validation-for="Facility.FilePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
