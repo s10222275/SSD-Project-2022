@@ -1,9 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>SSD_Project</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220704140309_AddImageClass.cs" />
+    <Compile Remove="Migrations\20220704140309_AddImageClass.Designer.cs" />
+    <Compile Remove="Migrations\20220704140803_AddStuff.cs" />
+    <Compile Remove="Migrations\20220704140803_AddStuff.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\images\swimming.jpg" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
@@ -12,6 +23,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\swimming.jpg" />
   </ItemGroup>
 
 </Project>

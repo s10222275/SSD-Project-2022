@@ -37,7 +37,7 @@ namespace SSD_Project.Pages.Bookings
             {
                 return NotFound();
             }
-           ViewData["Name"] = new SelectList(_context.Facility, "Name", "Name");
+            ViewData["FacilityID"] = new SelectList(_context.Facility, "FacilityID", "Name");
             return Page();
         }
 

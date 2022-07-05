@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    
 }
 
 <h1>Index</h1>
@@ -10,75 +11,24 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].MaxNumOfPeople)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].BlockNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].LocationName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].LevelNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].RommNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Facility[0].FilePath)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Facility) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaxNumOfPeople)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BlockNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LevelNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RommNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FilePath)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FacilityID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FacilityID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FacilityID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<tbody>
+    @foreach (var item in Model.Facility)
+    {
+    <div class="card">
+        <img src=@item.FilePath alt="Avatar" style="width:100%">
+        <div class="container">
+            <h4><b> @Html.DisplayFor(modelItem => item.Name)</b></h4>
+            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+
+
+            <a class="button" asp-page="./Edit" asp-route-id="@item.FacilityID">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.FacilityID">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.FacilityID">Delete</a>
+        </div>
+    </div>
+  
+
+    }
+</tbody>
+

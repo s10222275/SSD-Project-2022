@@ -36,8 +36,14 @@ namespace SSD_Project.Pages.Bookings
             {
                 return Page();
             }
+            Booking.Time = DateTime.Now;
+            Booking.StatusOfBooking = "Pending";
+            Booking.CheckInStatus = false;
+           
 
             _context.Booking.Add(Booking);
+            
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

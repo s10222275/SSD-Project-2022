@@ -14,15 +14,10 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Booking.BookingID" />
-            <div class="form-group">
-                <label asp-for="Booking.Time" class="control-label"></label>
-                <input asp-for="Booking.Time" class="form-control" />
-                <span asp-validation-for="Booking.Time" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Booking.FacilityID" class="control-label"></label>
                 <select asp-for="Booking.FacilityID" class="form-control" asp-items="ViewBag.FacilityID"></select>
-                <span asp-validation-for="Booking.FacilityID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Booking.StatusOfBooking" class="control-label"></label>

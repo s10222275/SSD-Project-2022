@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SSD_Project.Data;
 
 namespace SSD_Project.Migrations
 {
     [DbContext(typeof(SSD_ProjectContext))]
-    partial class SSD_ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20220705024043_AddList")]
+    partial class AddList
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
