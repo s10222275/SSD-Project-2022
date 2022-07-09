@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Compile Remove="Migrations\20220704140309_AddImageClass.cs" />
     <Compile Remove="Migrations\20220704140309_AddImageClass.Designer.cs" />
     <Compile Remove="Migrations\20220704140803_AddStuff.cs" />
@@ -15,16 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
->>>>>>> parent of c46379f (Added Bug Fixes)
+	  
+
     <Content Remove="wwwroot\images\swimming.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-<<<<<<< HEAD
+
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.25" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.25" />
-=======
->>>>>>> parent of c46379f (Added Bug Fixes)
+
+
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.25" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.25">
       <PrivateAssets>all</PrivateAssets>
