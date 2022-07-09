@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SSD_Project.Data;
 
 namespace SSD_Project.Migrations
 {
     [DbContext(typeof(SSD_ProjectContext))]
-    partial class SSD_ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20220706010257_AddImageClass")]
+    partial class AddImageClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,6 +95,29 @@ namespace SSD_Project.Migrations
                     b.ToTable("Facility");
                 });
 
+            modelBuilder.Entity("SSD_Project.Models.Slots", b =>
+                {
+                    b.Property<int>("SlotsID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("FacilityID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SlotsID");
+
+                    b.HasIndex("FacilityID");
+
+                    b.ToTable("Slots");
+                });
+
             modelBuilder.Entity("SSD_Project.Models.Booking", b =>
                 {
                     b.HasOne("SSD_Project.Models.Facility", "Facilitys")
@@ -100,6 +125,13 @@ namespace SSD_Project.Migrations
                         .HasForeignKey("FacilityID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SSD_Project.Models.Slots", b =>
+                {
+                    b.HasOne("SSD_Project.Models.Facility", null)
+                        .WithMany("NotAvailableSlots")
+                        .HasForeignKey("FacilityID");
                 });
 #pragma warning restore 612, 618
         }

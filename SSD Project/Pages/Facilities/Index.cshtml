@@ -12,12 +12,13 @@
     <a asp-page="Create">Create New</a>
 </p>
 
-<tbody>
+
     @foreach (var item in Model.Facility)
     {
     <div class="card">
-        <img src=@item.FilePath alt="Avatar" style="width:100%">
+        <img src=@Url.Content(@item.FilePath) alt="Avatar" style="width:100%">
         <div class="container">
+
             <h4><b> @Html.DisplayFor(modelItem => item.Name)</b></h4>
             <p>@Html.DisplayFor(modelItem => item.Description)</p>
 
@@ -30,5 +31,5 @@
   
 
     }
-</tbody>
+
 

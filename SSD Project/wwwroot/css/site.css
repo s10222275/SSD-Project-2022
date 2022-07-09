@@ -80,9 +80,8 @@ body {
     margin-bottom: 20px;
     margin-left: 20px;
     margin-right: 20px;
-    width: 10px;
-    height: 10px;
-    display: block;
+
+    display: inline-block;
 }
 
     /* On mouse-over, add a deeper shadow */

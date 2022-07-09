@@ -10,6 +10,5 @@ namespace SSD_Project.Models
         public int SlotsID { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-      
     }
 }
