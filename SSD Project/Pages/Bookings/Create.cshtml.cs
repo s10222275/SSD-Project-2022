@@ -28,7 +28,6 @@ namespace SSD_Project.Pages.Bookings
         [BindProperty]
         public Booking Booking { get; set; }
 
-
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -37,40 +36,14 @@ namespace SSD_Project.Pages.Bookings
             {
                 return Page();
             }
-            foreach (Facility F in _context.Facility)
-            {
-                if (F.FacilityID == Booking.FacilityID)
-                {
-                    Booking.Facilitys = F;
-                    System.Diagnostics.Debug.WriteLine("true");
-                }
-
-            }
-           
-
-
             Booking.Time = DateTime.Now;
             Booking.StatusOfBooking = "Pending";
             Booking.CheckInStatus = false;
-            Slots slots = new Slots();
-            slots.EndTime = Booking.EndTime;
-            slots.StartTime = Booking.StartTime;
-            if (slots.EndTime < slots.StartTime)
-            {
-                
-                return Page();
-            }
-            System.Diagnostics.Debug.WriteLine(Booking.Facilitys.Name);
-            foreach (Slots s in Booking.Facilitys.NotAvailableSlots)
-            {
-                if (s == slots)
-                {
-                    return Page();
-                }
-            }
-            Booking.Facilitys.NotAvailableSlots.Add(slots);
-            System.Diagnostics.Debug.WriteLine(Booking.Facilitys.NotAvailableSlots[0].ToString());
+           
+
             _context.Booking.Add(Booking);
+            
+
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
