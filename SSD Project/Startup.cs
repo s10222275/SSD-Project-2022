@@ -10,6 +10,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SSD_Project.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using SSD_Project.Models;
 
 namespace SSD_Project
 {
@@ -29,6 +32,11 @@ namespace SSD_Project
 
             services.AddDbContext<SSD_ProjectContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SSD_ProjectContext")));
+
+            services.AddIdentity<ApplicationUser, Microsoft.AspNetCore.Identity.IdentityRole>().AddDefaultUI().AddEntityFrameworkStores<SSD_ProjectContext>().AddDefaultTokenProviders();
+
+            services.AddMvc().AddRazorPagesOptions(options => { //options.Conventions.AuthorizePage("/Facilities/Create");
+                                                                options.Conventions.AuthorizeAreaPage("identity", "/Manage/Accounts"); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +55,7 @@ namespace SSD_Project
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
