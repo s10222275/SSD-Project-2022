@@ -315,7 +315,7 @@ namespace SSD_Project.Migrations
                     b.ToTable("Slots");
                 });
 
-<<<<<<< HEAD
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -367,8 +367,7 @@ namespace SSD_Project.Migrations
                         .IsRequired();
                 });
 
-=======
->>>>>>> parent of c46379f (Added Bug Fixes)
+
             modelBuilder.Entity("SSD_Project.Models.Booking", b =>
                 {
                     b.HasOne("SSD_Project.Models.Facility", "Facilitys")
