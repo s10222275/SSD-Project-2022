@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SSD_Project.Data;
 using SSD_Project.Models;
-
+using Microsoft.AspNetCore.Http;
 namespace SSD_Project.Pages.Facilities
 {
     public class EditModel : PageModel
@@ -22,6 +22,7 @@ namespace SSD_Project.Pages.Facilities
 
         [BindProperty]
         public Facility Facility { get; set; }
+        public IFormFile Upload { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

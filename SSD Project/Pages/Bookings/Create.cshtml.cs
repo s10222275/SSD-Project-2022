@@ -39,7 +39,19 @@ namespace SSD_Project.Pages.Bookings
             Booking.Time = DateTime.Now;
             Booking.StatusOfBooking = "Pending";
             Booking.CheckInStatus = false;
-           
+            if (Booking.StartTime > Booking.EndTime)
+            {
+                ModelState.AddModelError("EndTime", "End Time Earlier then Start Time, Please Re-enter again.");
+            }
+            foreach (Facility F in _context.Facility)
+            {
+                if (F.FacilityID == Booking.FacilityID)
+                {
+                    Booking.Facilitys = F;
+                    System.Diagnostics.Debug.WriteLine("true");
+                }
+
+            }
 
             _context.Booking.Add(Booking);
             

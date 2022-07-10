@@ -17,6 +17,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Facility.Name)
         </dd>
+        <img src=@Url.Content(Model.Facility.FilePath) alt="Avatar" style="width:100%">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Facility.Status)
         </dt>
@@ -59,8 +60,8 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Facility.Description)
         </dd>
-       
-        
+
+
     </dl>
 </div>
 <div>
