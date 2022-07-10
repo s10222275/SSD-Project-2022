@@ -10,5 +10,6 @@ namespace SSD_Project.Models
         public int AuditRecordID { get; set; }
         public string AuditActionType { get; set; }
         public DateTime DateTimeStamp { get; set; }
+        public string Username { get; set; }
     }
 }

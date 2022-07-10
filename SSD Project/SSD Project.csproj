@@ -10,6 +10,12 @@
     <Compile Remove="Migrations\20220704140309_AddImageClass.Designer.cs" />
     <Compile Remove="Migrations\20220704140803_AddStuff.cs" />
     <Compile Remove="Migrations\20220704140803_AddStuff.Designer.cs" />
+    <Compile Remove="Migrations\20220710002817_AddAuditandSlots.cs" />
+    <Compile Remove="Migrations\20220710002817_AddAuditandSlots.Designer.cs" />
+    <Compile Remove="Migrations\20220710003116_AddSlots.cs" />
+    <Compile Remove="Migrations\20220710003116_AddSlots.Designer.cs" />
+    <Compile Remove="Migrations\20220710004418_AddAuditUid.cs" />
+    <Compile Remove="Migrations\20220710004418_AddAuditUid.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

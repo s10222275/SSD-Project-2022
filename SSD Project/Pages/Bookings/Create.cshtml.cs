@@ -52,9 +52,39 @@ namespace SSD_Project.Pages.Bookings
                 }
 
             }
+            Slots slots = new Slots();
+            slots.EndTime = Booking.EndTime;
+            slots.StartTime = Booking.StartTime;
+            if (slots.EndTime < slots.StartTime)
+            {
+
+                return Page();
+            }
+            System.Diagnostics.Debug.WriteLine(Booking.Facilitys.Name);
+            foreach (Slots s in Booking.Facilitys.NotAvailableSlots)
+            {
+                if (s == slots)
+                {
+                    return Page();
+                }
+            }
+            Booking.Facilitys.NotAvailableSlots.Add(slots);
+            System.Diagnostics.Debug.WriteLine(Booking.Facilitys.NotAvailableSlots[0].ToString());
 
             _context.Booking.Add(Booking);
-            
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                // Create an auditrecord object
+                var auditrecord = new AuditRecord();
+                auditrecord.AuditActionType = "Add New Booking";
+                auditrecord.DateTimeStamp = DateTime.Now;
+                auditrecord.AuditRecordID = Booking.BookingID;
+                // Get current logged-in user
+                var userID = User.Identity.Name.ToString();
+                auditrecord.Username = userID;
+                _context.AuditRecords.Add(auditrecord);
+                await _context.SaveChangesAsync();
+            }
 
             await _context.SaveChangesAsync();
 

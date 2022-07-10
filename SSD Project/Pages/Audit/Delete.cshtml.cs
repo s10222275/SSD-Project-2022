@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SSD_Project.Data;
 using SSD_Project.Models;
 
-namespace SSD_Project.Pages.Bookings
+namespace SSD_Project.Pages.Audit
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace SSD_Project.Pages.Bookings
         }
 
         [BindProperty]
-        public Booking Booking { get; set; }
+        public AuditRecord AuditRecord { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,10 +29,9 @@ namespace SSD_Project.Pages.Bookings
                 return NotFound();
             }
 
-            Booking = await _context.Booking
-                .Include(b => b.Facilitys).FirstOrDefaultAsync(m => m.BookingID == id);
+            AuditRecord = await _context.AuditRecords.FirstOrDefaultAsync(m => m.AuditRecordID == id);
 
-            if (Booking == null)
+            if (AuditRecord == null)
             {
                 return NotFound();
             }
@@ -46,24 +45,11 @@ namespace SSD_Project.Pages.Bookings
                 return NotFound();
             }
 
-            Booking = await _context.Booking.FindAsync(id);
+            AuditRecord = await _context.AuditRecords.FindAsync(id);
 
-            if (Booking != null)
+            if (AuditRecord != null)
             {
-                _context.Booking.Remove(Booking);
-                if (await _context.SaveChangesAsync() > 0)
-                {
-                    // Create an auditrecord object
-                    var auditrecord = new AuditRecord();
-                    auditrecord.AuditActionType = "Delete New Booking";
-                    auditrecord.DateTimeStamp = DateTime.Now;
-                    auditrecord.AuditRecordID = Booking.BookingID;
-                    // Get current logged-in user
-                    var userID = User.Identity.Name.ToString();
-                    auditrecord.Username = userID;
-                    _context.AuditRecords.Add(auditrecord);
-                    await _context.SaveChangesAsync();
-                }
+                _context.AuditRecords.Remove(AuditRecord);
                 await _context.SaveChangesAsync();
             }
 

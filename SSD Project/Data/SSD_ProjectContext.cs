@@ -25,5 +25,6 @@ namespace SSD_Project.Data
         public DbSet<SSD_Project.Models.Facility> Facility { get; set; }
 
         public DbSet<SSD_Project.Models.Booking> Booking { get; set; }
+        public DbSet<SSD_Project.Models.AuditRecord> AuditRecords { get; set; }
     }
 }

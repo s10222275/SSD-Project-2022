@@ -15,9 +15,10 @@ namespace SSD_Project.Models
         public string StatusOfBooking { get; set; }
         public bool CheckInStatus { get; set; }
    
-      
+
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        [Range(0,999)]
         public int NumOfPeople { get; set; }
 
 
