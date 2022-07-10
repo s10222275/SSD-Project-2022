@@ -7,6 +7,6 @@ namespace SSD_Project.Models
 		public string Description { get; set; }
 		public DateTime CreatedDate { get; set; }
 		//default properties(Name) in Identity class
-		//ApplicationRole stores additional role values
+		//ApplicationRole stores additional role info
 	}
 }

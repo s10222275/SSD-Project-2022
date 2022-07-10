@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace SSD_Project.Data
 {
-    public class SSD_ProjectContext : IdentityDbContext<ApplicationUser>
+    public class SSD_ProjectContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public SSD_ProjectContext (DbContextOptions<SSD_ProjectContext> options)
             : base(options)
